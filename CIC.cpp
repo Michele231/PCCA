@@ -1,7 +1,7 @@
-/* This code is a C++ version of the CIC developed by Maestri et al 2019 */
-/* Author:  Michele Martinazzo                                           */
-/* OG Code: Tiziano Maestri                                              */
-/* Version: 0.02 (June 2023)                                             */
+/* This code is a C++ version of the matlab CIC developed by Maestri et al 2019 */
+/* Author:  Michele Martinazzo                                                  */
+/* OG Code: Tiziano Maestri                                                     */
+/* Version: 0.02 (June 2023)                                                    */
 
 #include <iostream>
 #include <fstream>
@@ -12,7 +12,7 @@
 #include <Eigen/Dense>
 #include <Spectra/SymEigsSolver.h>
 
-// method to read anwrite binary files  
+// method to read and write binary files  
 
 namespace Eigen{
 template<class Matrix>
@@ -65,6 +65,7 @@ class CIC {
     vector<double> distMethod(const MatrixXd& TSa, const MatrixXd& TSb, 
                     const EingenValVec& eigTSa, const EingenValVec& eigTSb, 
                     unsigned int p0);
+    double best_HSS(vector<double>& SIDa, vector<double>& SIDb);
     vector<double> testValues(const MatrixXd& TSa, const MatrixXd& TSa_eigenVec,
                           const MatrixXd& TestS, unsigned int p0);
 };
@@ -309,6 +310,29 @@ vector<double> CIC::distMethod(const MatrixXd& TSa, const MatrixXd& TSb,
 }
 
 //##########################################################################
+// method to compute the translation to obtain the best HSS
+double CIC::best_HSS(vector<double>& SIDa, vector<double>& SIDb) {
+
+    for (int i = 0; i<SIDb.size(); i++){SIDb[i] = -SIDb[i];};
+
+    double trlsl = -0.5; // initial tralslation
+    int TP,TN,FP,FN;     // CM values    
+
+    for (int i = 0; i == 1001; i++) {
+        
+        // definition of TP...
+        // computation of HSS...
+        
+        trlsl += 0.001;
+    };
+
+    // find the higher HSS...
+
+    return trlsl;
+}
+
+
+//##########################################################################
 // method to analyze the test set
 vector<double> CIC::testValues(const MatrixXd& TSa, const MatrixXd& TSa_eigenVec,
                           const MatrixXd& TestS, unsigned int p0){
@@ -374,8 +398,10 @@ void CIC::train(const char *f1, const char *f2) {
     // Similarity of the class 2 to itself with respect to the class 1
     vector<double> SID2 = distMethod(TS1,TS2,eig_T1,eig_T2,p0);
 
-    // Computing the translation of the region (distributional method)
-    // NOT YET IMPLEMENTED
+    // Computing the translation (distributional method)
+    // 
+    double trlsl = best_HSS(SID1,SID2);
+
 
     // Save the data on a temp file to use them 
     write_binary("temp/TS1_eigenVec.dat",eig_T1.eigenVec);
