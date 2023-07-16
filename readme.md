@@ -23,15 +23,14 @@ make install
 
 #### Train
 
-Put the two training sets in the "input" folder with the names "TS1.txt" and "TS2.txt". The training sets have 
-
+Put the two training sets in the "input" folder with the names "TS1.txt" and "TS2.txt". Each training set is specified as an n-by-m matrix, where each row is one m-dimensional point.
 ```bash
 ./cic train
 ```
 
 #### Test and Run
 
-Put the data to analize in the "input" folder with the name "data.txt" together with the training sets "TS1.txt" and "TS2.txt". 
+Put the data to analize in the "input" folder with the name "data.txt" together with the training sets "TS1.txt" and "TS2.txt". The data matrix follows the same structure of the training sets.
 
 ```bash
 ./cic test
