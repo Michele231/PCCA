@@ -1,6 +1,5 @@
 /* This code is a C++ version of the matlab CIC developed by Maestri et al 2019 */
 /* Author:  Michele Martinazzo                                                  */
-/* OG Code: Tiziano Maestri                                                     */
 /* Version: 0.02 (June 2023)                                                    */
 
 #include <iostream>
@@ -327,6 +326,7 @@ double CIC::best_HSS(vector<double>& SIDa, vector<double>& SIDb) {
     };
 
     // find the higher HSS...
+    // NOT IMPLEMENTED
 
     return trlsl;
 }
@@ -398,7 +398,7 @@ void CIC::train(const char *f1, const char *f2) {
     // Similarity of the class 2 to itself with respect to the class 1
     vector<double> SID2 = distMethod(TS1,TS2,eig_T1,eig_T2,p0);
 
-    // Computing the translation (distributional method)
+    // Computing the translation (distributional method) // NOT YET IMPLEMENTED
     // 
     double trlsl = best_HSS(SID1,SID2);
 
@@ -458,6 +458,8 @@ void CIC::test(const char *f1, const char *f2,
 }
 //##########################################################################
 
+//##########################################################################
+// MAIN
 //##########################################################################
 int main(int argc, char **argv) {
 

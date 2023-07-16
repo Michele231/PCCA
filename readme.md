@@ -1,27 +1,47 @@
-##################################
-# PRIMISSIMA VERSIONE DEL CICC++ #
-##################################
-# AUTORE: Michele Martinazzo     #
-##################################
-# DATA: 4 Giu. 2023              #
-##################################
-# VERSIONE: 0.01                 #
-##################################
+![alt text](https://github.com/Michele231/PCCA/blob/main/figures/suc.PNG)
 
-LA SEGUENTE VERSIONE NON È ANCORA COMPLETA
-MANCA DA COMPLETARE:
-- IL METODO DISTRIBUZIONALE (NELLA FUNZIONE "CIC::distMethod" NON È ANCORA PRESENTE L'OTTIMIZZAIONE 
-  DEL TRESHOLD)
-- MANCA DA FARE UN FILE DI CONFIGURAZIONE IN MODO TALE DA GESTIRE AGILMENTE PIÙ DI DUE CLASSI E CAMBIARE I NOMI
-- NON È TESTATO --- POTREBBERO ESSERCI DEI BUG
-- NON È OTTIMIZZATO ---- POTREBBE ESSERE LENTISSIMO PERCHÈ NON HO CONTROLLATO SE UNSA CHOLENSKY (NON CREDO)
+***
 
-COMPILAZIONE:
->>make
+# Principal Compontents Classification Algorithm (Work in Progress!)
 
-USO:
->>./cic train   --------> PER TRAINARE IL CIC SULLE CLASSI PRESENTI NELLA CARTELLA INPUT (CHIAMATI TSclear.txt E TScloud.txt)
-			  AL MOMENTO NON È POSSIBILE CAMBIARE I NOMI DEI FILE: FAREBBE CRASHARE IL COMPILATO, A MENO DI NON CAMBIARLI DENTRO
->>./cic test    --------> PER TESTARE IL TEST SET (FILE NELLA CARTELLA DI INPUT test_set.txt). L'OUTPUT VIENE SCTITTO IN UN TXT NELLA CARTELLA DI OUTPUT. 
-			  UN VALORE POSITIVO È ASSOCIATO AD UNA VICINANZA ALLA PRIMA CLASSE (CLEAR). VICEVERSA NEGATIVO ALLA SECONDA (CLOUD).
-			  RICORDARSI CHE IL DISTRIBUTIONAL NON È DEL TUTTO IMPLEMENTATO!!!
+This is a Work in Progress project! The "distributional method" as defined in Maestri et al., (2019) is not yet implemented! The algorithm works, but the performance could be bad (mostly when the two training sets have different dimension).
+
+### Installation
+
+```bash
+git clone https://github.com/Michele231/PCCA.git
+cd PCCA
+make install
+```
+
+### Dependencies
+
+1. Eigen (tested on v3.4.0)
+2. Spectra (tested on v1.0.0)
+
+### Usage
+
+#### Train
+
+Put the two training sets in the "input" folder with the names "TS1.txt" and "TS2.txt". The training sets have 
+
+```bash
+./cic train
+```
+
+#### Test and Run
+
+Put the data to analize in the "input" folder with the name "data.txt" together with the training sets "TS1.txt" and "TS2.txt". 
+
+```bash
+./cic test
+```
+
+#### Results
+The classification of the data is in the output folder. A positive number indicates a similarity with the class number one (TS1). On the other hand, a negative number indicates a similarity with the class number two (TS2).
+
+***
+
+![alt text](https://github.com/Michele231/cic/blob/main/figures/suc.PNG)
+
+
