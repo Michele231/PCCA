@@ -42,6 +42,5 @@ The classification of the data is in the output folder. A positive number indica
 
 ***
 
-![alt text](https://github.com/Michele231/cic/blob/main/figures/suc.PNG)
-
+![alt text](https://github.com/Michele231/PCCA/blob/main/figures/suc.PNG)
 
