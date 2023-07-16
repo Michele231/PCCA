@@ -16,8 +16,8 @@ make install
 
 ### Dependencies
 
-1. Eigen (tested on v3.4.0)
-2. Spectra (tested on v1.0.0)
+1. [Eigen](http://eigen.tuxfamily.org/) (tested on v3.4.0)
+2. [Spectra](https://spectralib.org/) (tested on v1.0.0)
 
 ### Usage
 
